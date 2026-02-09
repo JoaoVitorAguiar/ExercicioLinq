@@ -19,7 +19,7 @@ namespace ExercicioLinq
         [Fact(DisplayName = "01-Quantidade de produtos que possuem a palavra 'água' no nome.")]
         public void Test1()
         {
-            int quantidade = produtos.Where(p => p.Nome.ToLower().Contains("água")).Count();
+            int quantidade = produtos.Count(p => p.Nome.Contains("água", StringComparison.CurrentCultureIgnoreCase));
 
             Assert.Equal(3, quantidade);
         }
@@ -111,7 +111,7 @@ namespace ExercicioLinq
 
     public class Produto
     {
-        public string Nome { get; set; }
+        public required string Nome { get; set; }
         public decimal Valor { get; set; }
         public int Quantidade { get; set; }
     }
